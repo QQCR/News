@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="title_headlines">Headlines</string>
+    <string name="title_collection">Collection</string>
+    <string name="title_explore">Explore</string>
+    <string name="title_profile">My Profile</string>
+</resources>
