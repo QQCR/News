@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:paddingStart="12dp"
+        android:paddingTop="26dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="26dp">
+
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:minLines="3"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="16sp"
+
+            app:layout_constraintStart_toEndOf="@id/news_image"
+            app:layout_constraintTop_toTopOf="@id/news_image"
+            tools:text="PM Narendra Modi\'s frivolous statements won\'t help create wedge between me and Congress: Amarinder Singh"/>
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:src="@color/cardBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/news_source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/colorPrimaryLight"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/news_title"
+            app:layout_constraintTop_toBottomOf="@id/news_title"
+            tools:text="BBC News • 1h"/>
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@color/cardBackground"
+            android:padding="5dp"
+            android:text="delete"
+            android:textColor="@color/colorTextSecondary"
+            android:textSize="14sp"
+            android:focusable="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/news_source" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
+

@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.hardware.usb.UsbRequest;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.news.database.SaveDao;
+import com.example.news.database.UserDao;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
@@ -34,6 +38,10 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
     private AppBarLayout appBarLayout;
     private Toolbar toolbar;
     private String mUrl, mImg, mTitle, mDate, mSource, mAuthor;
+    private AppContext appContext;
+    private UserDao userDao;
+    private SaveDao saveDao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +97,10 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         }
 
         time.setText(mSource + author + " \u2022 " + Utils.DateToTimeFormat(mDate));
+
+        appContext = (AppContext) getApplication();
+        userDao = new UserDao(this);
+        saveDao = new SaveDao(this);
 
         initWebView(mUrl);
 
@@ -166,6 +178,22 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
             }catch (Exception e){
                 Toast.makeText(this, "Hmm.. Sorry, \nCannot be share", Toast.LENGTH_SHORT).show();
             }
+        }
+
+        else if(id == R.id.save){
+            int userId = userDao.getIdbyName(appContext.getUser().getUsername());
+
+            if(saveDao.isDataExist(userId,mTitle)){
+                Toast.makeText(this, "you have saved this article!", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                if(saveDao.insertSave(userId,mTitle,mSource,mImg,mUrl)){
+                    Toast.makeText(this, "saved!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+
+
         }
 
         return super.onOptionsItemSelected(item);

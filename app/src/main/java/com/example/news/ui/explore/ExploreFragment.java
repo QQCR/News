@@ -1,9 +1,13 @@
 package com.example.news.ui.explore;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -15,10 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.news.R;
 import com.example.news.api.ApiClient;
 import com.example.news.api.ApiInterface;
-import com.example.news.models.News;
 import com.example.news.models.Source;
 import com.example.news.models.SourceWrapper;
-import com.example.news.ui.headlines.Adapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +75,7 @@ public class ExploreFragment extends Fragment {
                     adapter = new ExploreAdapter(sources,getContext());
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
+                    initListener();
 
 
                 } else {
@@ -84,6 +87,18 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onFailure(Call<SourceWrapper> call, Throwable t) {
 
+            }
+        });
+
+    }
+
+    private void initListener(){
+
+        adapter.setOnItemClickListener(new ExploreAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sources.get(position).getUrl()));
+                startActivity(intent);
             }
         });
 

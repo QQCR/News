@@ -14,16 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.example.news.R;
-import com.example.news.Utils;
 import com.example.news.models.Source;
 
 import java.util.List;
@@ -91,7 +82,6 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.MyViewHo
             category = itemView.findViewById(R.id.source_category);
             desc = itemView.findViewById(R.id.source_desc);
             imageView = itemView.findViewById(R.id.source_image);
-            button = itemView.findViewById(R.id.btn_open);
 
             this.onItemClickListener = onItemClickListener;
 

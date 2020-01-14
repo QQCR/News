@@ -13,9 +13,4 @@
         android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="Settings"
-        app:showAsAction="never"/>
 </menu>
