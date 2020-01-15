@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout="@layout/require_login">
+
+    <TextView
+        android:id="@+id/loginHello"
+        android:text="Hello Guest!!!"
+        android:textColor="@color/colorTextSecondary"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-light"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/loginMessage"
+        android:text="You have to login first"
+        android:textColor="@color/colorTextSecondary"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loginHello"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="#fff"
+        android:layout_below="@id/loginMessage"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

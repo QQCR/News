@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.news.models.User;
+
 public class UserDao {
     private Context context;
     private NewsDBHelper newsDBHelper;private static final String TAG = "UserDao";
@@ -230,6 +232,41 @@ public class UserDao {
             }
         }
         return 0;
+    }
+
+    public User getUserByName(String name){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        User user = null;
+
+        try {
+            db = newsDBHelper.getReadableDatabase();
+            cursor = db.query(TABLE_NAME,
+                    USER_COLUMNS,
+                    "username = ?",
+                    new String[] {name},
+                    null, null, null);
+
+            if (cursor.moveToFirst()) {
+                String username = cursor.getString(cursor.getColumnIndex("username"));
+                String password = cursor.getString(cursor.getColumnIndex("password"));
+                String email = cursor.getString(cursor.getColumnIndex("email"));
+                user = new User(username,password,email);
+                return user;
+            }
+        }
+        catch (Exception e) {
+            Log.e(TAG, "", e);
+        }
+        finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return user;
     }
 
 

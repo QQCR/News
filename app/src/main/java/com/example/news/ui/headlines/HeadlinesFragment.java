@@ -129,7 +129,6 @@ public class HeadlinesFragment extends Fragment implements SwipeRefreshLayout.On
 
                         topHeadline.setVisibility(View.INVISIBLE);
                         swipeRefreshLayout.setRefreshing(false);
-                        //Toast.makeText(getActivity().getApplication(),"Noresult",Toast.LENGTH_SHORT).show();
                         String errorCode;
                         switch (response.code()) {
                             case 404:
